@@ -49,3 +49,28 @@ def check_guess(random_num, user_guess, ):
              one_try_guess(random_num)
 
 guess_game()
+
+# Rock Paper Scissors
+# Author: Luke
+def rock_paper_scissors_win_conditions(winner,loser):
+    if winner==1 and loser==3:
+        return(True)
+    elif winner>loser:
+        return(True)
+    else:
+        return(False)
+        
+def rock_paper_scissors():
+    choice=''
+    bot=random.randint(1,3)
+    while choice!=1 and choice!=2 and choice!=3:
+        choice=int(input('Enter your choice: 1. rock, 2. paper, 3. scissors '))
+        if choice!=1 and choice!=2 and choice!=3:
+            print('Please input 1, 2, or 3.')
+        else:
+            if choice==bot:
+                print('It is a tie!')
+            elif rock_paper_scissors_win_conditions(choice,bot):
+                print('You win!')
+            else:
+                print('You lose!')
