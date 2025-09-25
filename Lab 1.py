@@ -76,22 +76,29 @@ def ask_if_play_again(game_num):
 # Author: Luke
 # Description : User gets to choose rocl/paper/scissor and plays against the computer's choice.
 def rock_paper_scissors_win_conditions(winner, loser):
-    if winner == 1 and loser == 3:
-        return (True)
-    elif winner > loser:
-        return (True)
+    if winner == 1 and loser == 3:  
+        return True
+    elif winner == 2 and loser == 1:
+        return True
+    elif winner == 3 and loser == 2:
+        return True
     else:
-        return (False)
+        return False
 
 
 def rock_paper_scissors():
     choice = ''
     bot = random.randint(1, 3)
-    while choice != 1 and choice != 2 and choice != 3:
-        choice = int(input('Enter your choice: 1. rock, 2. paper, 3. scissors '))
-        if choice != 1 and choice != 2 and choice != 3:
+    choices = {1: "Rock", 2: "Paper", 3: "Scissors"}
+
+    while choice not in [1, 2, 3]:
+        choice = int(input('Enter your choice: 1. Rock, 2. Paper, 3. Scissors: '))
+        if choice not in [1, 2, 3]:
             print('Please input 1, 2, or 3.')
         else:
+            print(f"You chose: {choices[choice]}")
+            print(f"Computer chose: {choices[bot]}")
+
             if choice == bot:
                 print('It is a tie!')
                 ask_if_play_again(1)
@@ -101,7 +108,6 @@ def rock_paper_scissors():
             else:
                 print('You lose!')
                 ask_if_play_again(1)
-
 
 
 # Main Menu
